@@ -14,7 +14,4 @@ after_success:
 
 #Take those images and push to Dockerhub
 
-  - docker push iaurimas/multi-client
-  - docker push iaurimas/multi-nginx
-  - docker push iaurimas/multi-server
-  - docker push iaurimas/multi-worker
+  - docker push iaurimas/visits
