@@ -1,0 +1,20 @@
+language: generic
+#Super user level permision to execute build
+sudo: required
+#we need a copy of docker ready to run
+services:
+  - docker
+
+after_success:
+  - docker build -t iaurimas/visits .
+
+#Allow travis to Login to docker cli
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#Take those images and push to Dockerhub
+
+  - docker push iaurimas/multi-client
+  - docker push iaurimas/multi-nginx
+  - docker push iaurimas/multi-server
+  - docker push iaurimas/multi-worker

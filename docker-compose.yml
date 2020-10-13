@@ -1,0 +1,12 @@
+#Specify docker-compose version
+version: '3'
+#Creating containers
+services:
+  redis-server:
+    image: 'redis'  #Use redis image to build container
+  node-app:
+    build: . #Use current directory to find dockerfile and build container from it
+    ports:
+      - "4001:8081"  # - is used to specify an Array in YML
+    restart: always # Always restart container in case of app crash  restart: on-failure ;  restart: unless-stopped;  restart: "no"
+  
